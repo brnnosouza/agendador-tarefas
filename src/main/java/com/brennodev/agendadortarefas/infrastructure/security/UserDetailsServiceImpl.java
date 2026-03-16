@@ -3,13 +3,9 @@ package com.brennodev.agendadortarefas.infrastructure.security;
 
 import com.brennodev.agendadortarefas.infrastructure.business.dto.UsuarioDTO;
 import com.brennodev.agendadortarefas.infrastructure.client.UsuarioClient;
-import com.brennodev.usuario.infrastructure.entity.Usuario;
-import com.brennodev.usuario.infrastructure.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,7 +13,6 @@ public class UserDetailsServiceImpl  {
 
     @Autowired
     private UsuarioClient client;
-
 
     public UserDetails carregaDadosUsuario(String email, String token){
         UsuarioDTO usuarioDTO = client.buscaUsuarioPorEmail(email, token);

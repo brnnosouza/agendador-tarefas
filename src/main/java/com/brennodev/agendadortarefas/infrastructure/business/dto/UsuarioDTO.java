@@ -2,8 +2,6 @@ package com.brennodev.agendadortarefas.infrastructure.business.dto;
 
 import lombok.*;
 
-import java.util.List;
-
 @Getter
 @Setter
 @AllArgsConstructor
