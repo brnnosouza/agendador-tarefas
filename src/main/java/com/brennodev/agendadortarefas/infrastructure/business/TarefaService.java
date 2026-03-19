@@ -8,9 +8,11 @@ import com.brennodev.agendadortarefas.infrastructure.enums.StatusNotificacaoEnum
 import com.brennodev.agendadortarefas.infrastructure.repository.TarefasRepository;
 import com.brennodev.agendadortarefas.infrastructure.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -27,5 +29,12 @@ public class TarefaService {
         dto.setEmailUsuario(email);
         TarefasEntity entity = tarefaConverter.paraTarefaEntity(dto);
         return tarefaConverter.paraTarefaDTO(tarefasRepository.save(entity));
+    }
+    public List<TarefasDTO> buscaTarefasAgendadasPorPeriodo(LocalDateTime dataInicial, LocalDateTime dataFinal){
+        return tarefaConverter.paraListaTarefasDTO(tarefasRepository.findByDataEventoBetween(dataInicial, dataFinal));
+    }
+    public List<TarefasDTO> buscaTarefasPorEmail(String token){
+        String email = jwtUtil.extrairEmailDoToken(token.substring(7));
+        return tarefaConverter.paraListaTarefasDTO(tarefasRepository.findByEmailUsuario(email));
     }
 }
