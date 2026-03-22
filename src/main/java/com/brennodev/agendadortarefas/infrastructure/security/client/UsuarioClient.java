@@ -1,4 +1,4 @@
-package com.brennodev.agendadortarefas.infrastructure.client;
+package com.brennodev.agendadortarefas.infrastructure.security.client;
 
 import com.brennodev.agendadortarefas.infrastructure.business.dto.UsuarioDTO;
 import org.springframework.cloud.openfeign.FeignClient;
